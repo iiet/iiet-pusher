@@ -14,8 +14,8 @@ require 'rake'
 require 'jeweler'
 Jeweler::Tasks.new do |gem|
   # gem is a Gem::Specification... see http://guides.rubygems.org/specification-reference/ for more options
-  gem.name = "iiet-pusher"
-  gem.homepage = "http://github.com/kruczjak/iiet-pusher"
+  gem.name = "iiet_pusher"
+  gem.homepage = "http://github.com/iiet/iiet-pusher"
   gem.license = "MIT"
   gem.summary = %Q{TODO: one-line summary of your gem}
   gem.description = %Q{TODO: longer description of your gem}
@@ -45,7 +45,7 @@ Rake::RDocTask.new do |rdoc|
   version = File.exist?('VERSION') ? File.read('VERSION') : ""
 
   rdoc.rdoc_dir = 'rdoc'
-  rdoc.title = "iiet-pusher #{version}"
+  rdoc.title = "iiet_pusher #{version}"
   rdoc.rdoc_files.include('README*')
   rdoc.rdoc_files.include('lib/**/*.rb')
 end
