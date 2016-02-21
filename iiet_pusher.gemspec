@@ -25,6 +25,7 @@ Gem::Specification.new do |s|
     "LICENSE.txt",
     "README.rdoc",
     "Rakefile",
+    "iiet_pusher.gemspec",
     "iiet_pusher.rb",
     "lib/iiet_pusher.rb",
     "lib/notifier.rb",
