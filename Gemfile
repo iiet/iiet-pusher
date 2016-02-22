@@ -15,3 +15,4 @@ end
 
 gem 'simple-rss'
 gem 'rest-client'
+gem 'nokogiri'
