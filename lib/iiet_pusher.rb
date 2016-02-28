@@ -4,13 +4,11 @@ module IietPusher
   autoload :Notifier, './lib/notifier'
   autoload :OauthInteractor, './lib/oauth_interactor'
   autoload :ForumInteractor, './lib/forum_interactor'
+  autoload :Rss, './lib/rss'
   class Pusher
     def self.process(file)
       settings = YAML.load(File.open(file))
-      notifier = Notifier.new(settings)
-      notifier.notify_chat('test', 'er', 'sersrer')
-      f = ForumInteractor.new(settings)
-      p f.get('https://forum.iiet.pl/feed.php?f=405&t=22606')
+      Rss.new(settings, '')
     end
   end
 
