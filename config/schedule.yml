@@ -1,0 +1,3 @@
+ForumPusherWorker:
+  cron: "* * * * *"
+  queue: forum_cron

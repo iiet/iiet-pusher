@@ -1,0 +1,1 @@
+worker_general: bundle exec sidekiq -r ./environment.rb -C ./config/sidekiq.yml --tag pusher_general

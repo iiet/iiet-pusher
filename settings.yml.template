@@ -2,5 +2,5 @@ forum_login_url: 'https://accounts.iiet.pl/students/sign_in'
 forum:
   login:
   password:
-chat_url:
-2013_2018_url:
+forum_feeds:
+  - [name, forum_url, chat_url]

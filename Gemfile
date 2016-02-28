@@ -11,8 +11,16 @@ group :development do
   gem "bundler", "~> 1.0"
   gem "jeweler", "~> 2.0.1"
   gem "simplecov", ">= 0"
+  gem 'rspec'
 end
 
 gem 'simple-rss'
 gem 'rest-client'
 gem 'nokogiri'
+gem 'sidekiq'
+gem 'foreman'
+gem 'sidekiq-scheduler'
+gem 'pry'
+gem 'activerecord'
+gem 'activesupport'
+gem 'sqlite3'

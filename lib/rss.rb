@@ -3,19 +3,40 @@ require 'pry'
 
 module IietPusher
   class Rss
-    def initialize(settings, url)
-      f = ForumInteractor.new(settings)
-      response = f.get('https://forum.iiet.pl/feed.php?f=405&t=22606')
-      rss = SimpleRSS.parse response
 
-      notifier = Notifier.new(settings)
-      binding.pry
-      notifier.notify_chat(
-        rss.channel.title.force_encoding(Encoding::UTF_8),
-        rss.items.first.link.force_encoding(Encoding::UTF_8),
-        rss.items.first.content.force_encoding(Encoding::UTF_8)
-      )
+    attr_reader :newest_time, :title
 
+    def initialize(feed)
+      @rss = SimpleRSS.parse(feed)
+      @newest_time = @rss.items.first.published
+      @title = @rss.channel.title.force_encoding(Encoding::UTF_8)
+    end
+
+    def data
+      @rss.items
+    end
+
+    def only_newest(time)
+      items = @rss.items.take_while { |item| item.published > time }
+      deep_force_encoding(items)
+    end
+
+    def deep_force_encoding(items)
+      arr = []
+      items.each do |item|
+        h = {}
+        item.to_hash.each do |k, v|
+          if v.respond_to?(:force_encoding)
+            h[k] = v.force_encoding(Encoding::UTF_8)
+          else
+            h[k] = v
+          end
+        end
+
+        arr << h
+      end
+
+      arr
     end
   end
 end

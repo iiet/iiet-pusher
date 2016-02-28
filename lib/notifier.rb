@@ -2,17 +2,13 @@ require 'rest-client'
 
 module IietPusher
   class Notifier
-    def initialize(settings)
-      @settings = settings
-    end
-
-    def notify_chat(title, link, text)
-      RestClient.post(@settings['chat_url'], {
+    def notify_chat(url, title, link, text)
+      RestClient.post(url, {
         text: '',
         attachments: [
           {
             title: title,
-            title_link: link,
+            title_link: link.gsub!('amp;', ''),
             text: text,
             color: '#0000FF'
 	        }
