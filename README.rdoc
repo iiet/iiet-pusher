@@ -1,6 +1,6 @@
 = iiet-pusher
 
-Description goes here.
+Authorizates via OAuth, reads rss feeds and pushes them to defined endpoint.
 
 == Contributing to iiet-pusher
  
