@@ -5,10 +5,9 @@ module IietPusher
 
     attr_accessor :logger
 
-    def initialize(file, logger=nil)
+    def initialize(file)
       @settings = YAML.load(File.open(file))
       @forum_interactor = ForumInteractor.new(@settings)
-      @logger = logger
     end
 
     def process
