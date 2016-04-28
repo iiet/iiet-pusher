@@ -40,7 +40,7 @@ module IietPusher
 
     def create_or_update_forum_time(id, last_sync, newest_time)
       return ForumTime.create(atom_id: id, time: newest_time) if last_sync.nil?
-      last_sync.update_attribute(:time, newest_time) if last_sync.last_sync_time <= newest_time
+      last_sync.update_attribute(:time, newest_time) if last_sync.time <= newest_time
       logger.info "Time updated for #{id} - #{newest_time}"
     end
   end
