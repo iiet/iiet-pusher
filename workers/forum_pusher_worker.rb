@@ -1,7 +1,7 @@
 class ForumPusherWorker
   include Sidekiq::Worker
 
-  @@iiet_pusher = IietPusher::ForumPusher.new('settings.yml')
+  @@iiet_pusher = IietPusher::ForumPusher.new('settings.yml', logger)
 
   sidekiq_options queue: :forum_cron
 

@@ -2,13 +2,19 @@ require 'yaml'
 
 module IietPusher
   class ForumPusher
-    def initialize(file)
+
+    attr_accessor :logger
+
+    def initialize(file, logger=nil)
       @settings = YAML.load(File.open(file))
       @forum_interactor = ForumInteractor.new(@settings)
+      @logger = logger
     end
 
     def process
       @settings['forum_feeds'].each do |subject|
+        logger.info "Processing: #{subject}"
+
         last_sync = ForumTime.last_sync_time(subject[0])
         last_sync_time = last_sync&.time
 
@@ -35,6 +41,7 @@ module IietPusher
     def create_or_update_forum_time(id, last_sync, newest_time)
       return ForumTime.create(atom_id: id, time: newest_time) if last_sync.nil?
       last_sync.update_attribute(:time, newest_time) if last_sync.last_sync_time <= newest_time
+      logger.info "Time updated for #{id} - #{newest_time}"
     end
   end
 end
